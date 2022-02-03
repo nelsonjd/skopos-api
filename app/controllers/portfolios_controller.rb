@@ -8,16 +8,16 @@ class PortfoliosController < ActionController::API
   end
 
   def create
+    status = 200
     @portfolio = Portfolio.first
 
-    if @portfolio
-      save_porfolio(@portfolio)
-      render status: 200, json: @portfolio and return
+    if not @portfolio
+      status = 201
+      @portfolio = Portfolio.create
     end
 
-    @portfolio = Portfolio.create
     save_porfolio(@portfolio)
-    render status: 201, json: @portfolio
+    render status: status, json: @portfolio
   end
 
   def update
