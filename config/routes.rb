@@ -3,4 +3,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get 'performances', to: 'performances#index'
+  
+  get 'portfolio', to: 'portfolios#show'
+  post 'portfolio', to: 'portfolios#create'
+  put 'portfolio', to: 'portfolios#update'
 end
